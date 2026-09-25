@@ -23,7 +23,7 @@ PKM Engine เป็นเว็บแอปจัดการความรู
 | Algorithm | SM-2 spaced repetition (quality 1/3/4/5) | เขียนเองในไฟล์ ไม่ใช้ library |
 | Markdown | Mini parser ที่เขียนเอง (`mdToHtml`) | รองรับ syntax พื้นฐานเท่านั้น |
 | AI helper | Gemini Gem (ปุ่ม ✨) | เป็นแค่ลิงก์เปิดแท็บใหม่ ไม่มี API integration |
-| Hosting | GitHub Pages (อ้างอิงจาก changelog v1.0.0) | URL จริงต้องยืนยัน |
+| Hosting | GitHub Pages | repo มี deployment `github-pages` แล้ว ส่วน URL จริงต้องยืนยัน |
 | Browser APIs | Fetch, `localStorage`, HTML5 Drag and Drop, `window.storage` | `window.storage` ไม่ใช่ API มาตรฐานของ browser (ดูหัวข้อ 5) |
 
 ---
@@ -151,6 +151,8 @@ source code ของ Apps Script ไม่อยู่ใน repo ข้อม�
 
 ### 4.5 Deploy ขึ้น GitHub Pages
 
+repo นี้เปิดใช้ GitHub Pages อยู่แล้ว (หน้า repo แสดง deployment `github-pages`) ส่วน branch/folder ที่ตั้งไว้**ต้องยืนยัน**ที่ **Settings → Pages** ถ้าต้องตั้งค่าใหม่ (เช่น fork ไปใช้เอง) ให้ทำดังนี้
+
 1. ไปที่ **Settings → Pages** ของ repo
 2. Source เลือก **Deploy from a branch** → branch `main` / folder `/ (root)`
 3. รอ build แล้วเปิด URL ที่ได้ (น่าจะเป็น `https://bk-19.github.io/pkm-bk/` แต่ **ต้องยืนยัน**)
@@ -179,7 +181,7 @@ source code ของ Apps Script ไม่อยู่ใน repo ข้อม�
 4. **ความปลอดภัยของ token และ URL**
    - `GET` (`ping`, `list`) ส่ง token ผ่าน query string ทำให้ token ไปปรากฏใน URL log ได้
    - token เก็บใน `localStorage` แบบ plaintext
-   - `API.url`, `SHEET_URL` และ Sheet ID ถูก hardcode ไว้ในโค้ด ถ้า repo เป็น public คนอื่นจะเห็นด้วย (สถานะ public/private ของ repo และสิทธิ์การแชร์ Sheet **ต้องยืนยัน**)
+   - `API.url`, `SHEET_URL` และ Sheet ID ถูก hardcode ไว้ในโค้ด และ repo นี้เป็น **Public** ใครก็เห็นค่าเหล่านี้ได้ (รวมถึงในหน้าเว็บที่ deploy บน GitHub Pages) ระบบจึงป้องกันด้วย API Token อย่างเดียว ส่วนสิทธิ์การแชร์ของ Google Sheet **ต้องยืนยัน**
 
 ### 🟡 ควรปรับปรุง (Bug เล็ก / UX / คุณภาพโค้ด)
 
